@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 100 100 100; /* Medium Gray */
+    --foreground: 255 255 255; /* White */
+    --muted: 200 200 200;       /* Light Gray */
+    --accent: 192 192 192;      /* Silver */    
+  }
+}
+
+@layer utilities {
+  
+}
+@keyframes move {
+  0%{
+    transform: translate(0,0);
+  }
+  100%{
+    transform: translate(100px, 100px);
+  }
+}
+html {
+  scroll-behavior: auto !important;
+  overflow-anchor: none;
+}
+
+body {
+  overflow-anchor: none;
+}
