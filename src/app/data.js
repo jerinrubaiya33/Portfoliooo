@@ -12,31 +12,31 @@ Websites:
 export const projectsData = [
   {
     id: 1,
+    name: "Zephyra Clothing Page",
+    description: "React, Mongoose, Express.js, cors, dotenv, jsonwebtoken, multer, nodemon, validator, bcrypt, axios, react-router-dom`",
+    date: "2024-09-10",
+    demoLink: "https://jerinrubaiya33.github.io/Move-With-Joy/MOVE_WITH_JOY.html",
+  },
+  {
+    id: 2,
+    name: "Ice-Cream Menu n Reservation",
+    description: "Sign in or up comfortably",
+    date: "2025-04-30",
+    demoLink: "https://ice-cream-menu-reservation.vercel.app/",
+  },
+  {
+    id: 3,
     name: "Balloon PopUp",
     description: "Popup the balloons & have fun",
     date: "2024-08-15",
     demoLink: "https://jerinrubaiya33.github.io/Balloon-PopUp/Balloon.html",
   },
   {
-    id: 2,
+    id: 4,
     name: "Space Shooter",
     description: "Shoot enemies in space",
     date: "2024-06-18",
     demoLink: "https://jerinrubaiya33.github.io/shooter-space/space_shooter.html",
-  },
-  {
-    id: 3,
-    name: "Travel agency",
-    description: "Move With Joy",
-    date: "2024-09-10",
-    demoLink: "https://jerinrubaiya33.github.io/Move-With-Joy/MOVE_WITH_JOY.html",
-  },
-  {
-    id: 4,
-    name: "Ice-Cream Menu n Reservation",
-    description: "Sign in or up comfortably",
-    date: "2025-04-30",
-    demoLink: "https://ice-cream-menu-reservation.vercel.app/",
   },
   {
     id: 5,
