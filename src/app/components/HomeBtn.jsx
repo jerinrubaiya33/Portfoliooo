@@ -96,7 +96,7 @@ const StyledWrapper = styled.div`
   .button__text {
   position: absolute;
   inset: 0;
-  animation: text-rotation 18s linear infinite;
+  animation: text-rotation 58s linear infinite;
   font-size: 12px;
   will-change: transform;
 
