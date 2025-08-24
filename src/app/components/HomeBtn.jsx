@@ -72,8 +72,8 @@ const StyledWrapper = styled.div`
     border: none;
     background: #000;
     color: #fff;
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     position: relative;
     display: grid;
@@ -117,8 +117,8 @@ const StyledWrapper = styled.div`
 
   .button__circle {
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     overflow: hidden;
     background: #fff;
     color: #000;
