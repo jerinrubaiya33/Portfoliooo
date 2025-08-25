@@ -3,7 +3,7 @@ import React, { useMemo } from "react";
 import styles from './ProjectLayout.module.css';
 
 const buttonColors = [
-  "#6a4c93", "#00AED4", "#f44336", "#ff0068", "#ff9800", "#76AB00", "#ffc100"
+  "#6a4c93", "#00AED4", "#f44336", "#ff0068", "#ff9800", "#8EC900", "#ffc100"
 ];
 
 const ProjectLayout = ({ name, description, date, demoLink, index }) => {
