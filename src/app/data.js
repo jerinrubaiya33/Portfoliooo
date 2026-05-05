@@ -7,114 +7,86 @@ Websites:
 - https://skillicons.dev (Skill Icons to show skills)
 - https://github-readme-streak-stats.herokuapp.com (Github Readme Streak Stats)
 
-:root {
-  --background: 27 27 27;
-  --foreground: 225 225 225;
-  --muted: 115 115 115;
-  --accent: 254 254 91; #FEFE5B
-}
-
 */
 
 export const projectsData = [
   {
     id: 1,
-    name: "EcoTracker",
-    description: "Track your carbon footprint",
-    date: "2022-08-15",
-    demoLink: "https://ecotracker.example.com",
+    name: "Zephyra Clothing Page",
+    description: "React, Mongoose, Express.js, cors, dotenv, jsonwebtoken, multer, nodemon, validator, bcrypt, axios, react-router-dom",
+    date: "2025-07-10",
+    demoLink: "https://zephyra-frontend.vercel.app",
   },
   {
     id: 2,
-    name: "ArtGallery Online",
-    description: "Digital art showcase platform",
-    date: "2022-06-20",
-    demoLink: "https://artgalleryonline.example.com",
+    name: "Ice-Cream Menu n Reservation",
+    description: "Reusable React components, clean file structure, Flex/Grid & BEM, smooth animations & gradients and responsive media queries for all devices.",
+    date: "2025-06-30",
+    demoLink: "https://ice-cream-menu-reservation.vercel.app/",
   },
   {
     id: 3,
-    name: "BudgetPlanner",
-    description: "Plan and track expenses",
-    date: "2022-09-10",
-    demoLink: "https://budgetplanner.example.com",
+    name: "Balloon PopUp",
+    description: "HTML5, CSS3, JavaScript",
+    date: "2025-04-15",
+    demoLink: "https://jerinrubaiya33.github.io/Balloon-PopUp/Balloon.html",
   },
   {
     id: 4,
-    name: "HealthBeat",
-    description: "Monitor heart rate zones",
-    date: "2022-05-30",
-    demoLink: "https://healthbeat.example.com",
+    name: "Space Shooter",
+    description: "HTML5, CSS3, JavaScript",
+    date: "2025-04-18",
+    demoLink: "https://jerinrubaiya33.github.io/shooter-space/space_shooter.html",
   },
   {
     id: 5,
-    name: "RecipeFinder",
-    description: "Discover new recipes",
-    date: "2022-07-12",
-    demoLink: "https://recipefinder.example.com",
+    name: "Shoe Website (WordPress)",
+    description: "Depictor, Elementor pro",
+    date: "2025-03-12",
+    demoLink: "https://shoebedoo.kesug.com/?i=1",
   },
   {
     id: 6,
-    name: "JourneyLogger",
-    description: "Log your travels",
-    date: "2022-10-01",
-    demoLink: "https://journeylogger.example.com",
+    name: "Book PDF app",
+    description: "Android Studio, Kotlin",
+    date: "2025-1-11",
+    demoLink: "https://github.com/jerinrubaiya33/Android_App",
   },
   {
     id: 7,
-    name: "StudyBuddy",
-    description: "Collaborative learning platform",
-    date: "2022-04-18",
-    demoLink: "https://studybuddy.example.com",
-  },
-  {
-    id: 8,
-    name: "TechTalk",
-    description: "Tech news aggregator",
-    date: "2022-11-05",
-    demoLink: "https://techtalk.example.com",
-  },
-  {
-    id: 9,
-    name: "FitTrack",
-    description: "Fitness and workout tracker",
-    date: "2022-03-22",
-    demoLink: "https://fittrack.example.com",
-  },
-  {
-    id: 10,
-    name: "MindfulMoments",
-    description: "Meditation and mindfulness app",
-    date: "2022-02-14",
-    demoLink: "https://mindfulmoments.example.com",
+    name: "Zephyra Admin Panel",
+    description: "React, Mongoose, Express.js, cors, dotenv, jsonwebtoken, multer, nodemon, validator, bcrypt, axios, react-router-dom",
+    date: "2025-07-20",
+    demoLink: "https://zephyra-adminpanel.vercel.app",
   },
 ];
 
 export const BtnList = [
-  { label: "Home", link: "/", icon: "home", newTab: false },
+  // { label: "Home", link: "/", icon: "home", newTab: false },
   { label: "About", link: "/about", icon: "about", newTab: false },
   { label: "Projects", link: "/projects", icon: "projects", newTab: false },
   { label: "Contact", link: "/contact", icon: "contact", newTab: false },
   {
     label: "Github",
-    link: "https://www.github.com/codebucks27",
+    link: "https://github.com/jerinrubaiya33",
     icon: "github",
     newTab: true,
   },
   {
     label: "LinkedIn",
-    link: "https://www.linkedin.com/in/codebucks",
+    link: "https://www.linkedin.com/in/jerin-rubaiya/",
     icon: "linkedin",
     newTab: true,
   },
-  {
-    label: "X",
-    link: "https://www.x.com/code_bucks",
-    icon: "twitter",
-    newTab: true,
-  },
+  // {
+  //   label: "X",
+  //   link: "https://www.x.com/code_bucks",
+  //   icon: "twitter",
+  //   newTab: true,
+  // },
   {
     label: "Resume",
-    link: "/resume.pdf",
+    link: "/Resume.pdf",
     icon: "resume",
     newTab: true,
   },
