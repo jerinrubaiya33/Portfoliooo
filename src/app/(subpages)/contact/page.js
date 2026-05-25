@@ -1,57 +1,106 @@
-"use client";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import bg from "../../../../public/background/contact-background.png";
-import Form from "@/app/components/contact/Form";
+// //page.js
+// "use client";
+// import Link from "next/link";
+// import { motion } from "framer-motion";
+// import Form from "@/app/components/contact/Form";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-};
+// const fadeInUp = {
+//   hidden: { opacity: 0, y: 20 },
+//   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+// };
 
-const staggerContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2
-    }
-  }
-};
+// const staggerContainer = {
+//   hidden: {},
+//   show: {
+//     transition: { staggerChildren: 0.15 }
+//   }
+// };
 
-export default function Contact() {
-  return (
-    <div className="relative min-h-screen flex items-center justify-center">
-      {/* Background Image */}
-      <Image
-        src={bg}
-        alt="background-image"
-        className="fixed w-full h-full object-cover opacity-60 -z-0 top-0 left-0"
-      />
+// export default function Contact() {
+//   return (
+//     // Replaced flex items-center justify-center with a structured vertical layout to prevent vertical cropping and ensure 100% background coverage
+//     <div className="relative min-h-screen w-full bg-[#f3efe6] text-[#1a1a1a] font-mono overflow-y-auto px-4 py-16 sm:px-8 flex flex-col items-center justify-start">
 
-      {/* Overlay Content */}
-      <motion.article
-        variants={staggerContainer}
-        initial="hidden"
-        animate="show"
-        className="relative z-10 w-full flex flex-col items-center justify-center space-y-2 px-4 sm:px-0"
-      >
-        <motion.div
-          variants={fadeInUp}
-          className="flex flex-col items-center justify-center space-y-6 w-full sm:w-3/4 mt-24 sm:mt-0"
-        >
-          <h1 className="text-white font-semibold text-center text-2xl sm:text-4xl font-supermercado tracking-[0.1rem] sm:tracking-[0.2rem] uppercase">
-            Get ahold of me
-          </h1>
-          <p className="font-medium text-center font-supermercado text-sm sm:text-base leading-relaxed sm:leading-loose tracking-wide uppercase text-white/80">
-            I’ve built several personal  projects using HTML5, CSS3, JavaScript (ES6+), and frameworks like React, NextJs.
-            Through these projects, I’ve gained hands-on experience with responsive design, cross browser compatibility, Git for version control, and integrating RESTful APIs. I also have basic knowledge of backend technologies like Node.js. Thank you.
-          </p>
-        </motion.div>
+//       {/* subtle CRT scanlines */}
+//       <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:100%_4px] pointer-events-none" />
 
-        <motion.div variants={fadeInUp} className="w-full sm:w-3/4 mt-6">
-          <Form />
-        </motion.div>
-      </motion.article>
-    </div>
-  );
-}
+//       {/* dark terminal overlay grid */}
+//       <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:18px_18px] pointer-events-none" />
+
+//       {/* THEME-MATCHED GO BACK BUTTON */}
+//       <div className="absolute top-4 left-4 z-50">
+//         <Link 
+//           href="/" 
+//           className="inline-flex items-center gap-1.5 bg-[#f3efe6] text-[#1a1a1a] border-2 border-[#1a1a1a] py-1.5 px-3 text-xs font-bold transition-all hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[3px_3px_0px_0px_rgba(26,26,26,1)] active:translate-x-0 active:translate-y-0 active:shadow-none"
+//         >
+//           <span>&larr;</span> [cd ..]
+//         </Link>
+//       </div>
+
+//       <motion.article
+//         variants={staggerContainer}
+//         initial="hidden"
+//         animate="show"
+//         className="relative z-10 w-full max-w-4xl py-10 px-6 sm:px-10 border-2 border-[#1a1a1a] bg-[#f3efe6] shadow-[6px_6px_0px_#1a1a1a] mt-8"
+//       >
+
+//         {/* HEADER (terminal + system style) */}
+//         <motion.div variants={fadeInUp} className="mb-8">
+
+//           <p className="text-xs text-[#7f7c75] mb-2">
+//             guest@machine:~$ connect --contact
+//           </p>
+
+//           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight flex items-center gap-2">
+//             Establish Connection
+//             <span className="text-[#e31e24] animate-pulse">▊</span>
+//           </h1>
+
+//           <div className="mt-3 text-sm text-[#4a4a4a] leading-relaxed">
+//             // secure channel initialized<br />
+//             // awaiting message input...
+//           </div>
+
+//         </motion.div>
+
+//         {/* INFO BLOCK (editorial terminal hybrid) */}
+//         <motion.div
+//           variants={fadeInUp}
+//           className="mb-10 border-2 border-[#1a1a1a] p-5 bg-white/40"
+//         >
+//           <p className="text-sm text-[#4a4a4a] leading-relaxed">
+//             I’ve built projects using React, Next.js, JavaScript (ES6+),
+//             with experience in responsive UI, REST APIs, Git workflows and
+//             backend fundamentals using Node.js.
+//           </p>
+
+//           <p className="mt-3 text-xs text-[#7f7c75]">
+//             status: frontend.engineer.active
+//           </p>
+//         </motion.div>
+
+//         {/* FORM BLOCK (command panel style) */}
+//         <motion.div
+//           variants={fadeInUp}
+//           className="border-2 border-[#e31e24] bg-[#fffdf8] p-6 shadow-[4px_4px_0px_#e31e24]"
+//         >
+//           <div className="mb-4 text-xs font-bold text-[#e31e24]">
+//             [ INPUT CHANNEL ]
+//           </div>
+
+//           <Form />
+//         </motion.div>
+
+//         {/* FOOTER SYSTEM STATUS */}
+//         <motion.div
+//           variants={fadeInUp}
+//           className="mt-8 text-xs flex justify-between text-[#7f7c75]"
+//         >
+//           <span>connection: ready</span>
+//           <span className="text-[#1a1a1a]">█ active</span>
+//         </motion.div>
+
+//       </motion.article>
+//     </div>
+//   );
+// }
