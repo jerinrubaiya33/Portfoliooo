@@ -73,6 +73,11 @@ const STYLES = `
   letter-spacing: 0.04em;
 }
 .cta-btn:hover { background: ${C.cardDark}; color: ${C.pureWhite}; transform: translateY(-3px); }
+@media (max-width: 640px) {
+  .c-grid { grid-template-columns: 1fr; }
+  .c-link { padding: 16px 18px; }
+  .cta { padding: 72px 24px; }
+}
 `;
 
 const sectionReveal = {
@@ -175,13 +180,12 @@ export default function Contact() {
         whileInView="visible"
         viewport={{ once: false, amount: 0.3 }}
       >
-        <p className="cta-h">
-          Have a project 
-          <br />
-          <p className="ml-[200px] text-[#269add]">in mind?</p>
-        </p>
-        <p className="cta-sub ml-[200px]">{"Let's build reliable, fluid web systems."}</p>
-        <a href="mailto:jerinrubaiyakhan11@gmail.com" className="cta-btn ml-[200px]">
+        <div className="cta-h">
+          <div>Have a project</div>
+          <div className="text-[#269add]">in mind?</div>
+        </div>
+        <p className="cta-sub">{"Let's build reliable, fluid web systems."}</p>
+        <a href="mailto:jerinrubaiyakhan11@gmail.com" className="cta-btn">
           Start a Conversation →
         </a>
 

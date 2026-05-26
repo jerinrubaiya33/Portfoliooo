@@ -58,6 +58,9 @@ const STYLES = `
   position: relative;
   overflow: hidden;
 }
+@media (max-width: 640px) {
+  .b-card { padding: 28px 22px; border-radius: 20px; }
+}
 .b-card.hero-card::before {
   content: "";
   position: absolute;
@@ -136,6 +139,9 @@ const STYLES = `
   margin-top: 8px;
   font-weight: 600;
 }
+@media (max-width: 640px) {
+  .stat-group { gap: 20px; flex-wrap: wrap; }
+}
 `;
 
 const sectionReveal = {
@@ -212,7 +218,13 @@ export default function About() {
               style={{ display: "grid", gridTemplateColumns: "1fr", gap: 20 }}
               variants={itemReveal}
             >
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20 }}>
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+                  gap: 20,
+                }}
+              >
                 {/* CARD 1: DEVELOPMENT */}
                 <motion.div
                   className="b-card orange"
@@ -321,7 +333,7 @@ export default function About() {
                     borderBottom: "none",
                     paddingBottom: 0,
                     display: "grid",
-                    gridTemplateColumns: "1fr 1fr 1fr",
+                    gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
                     gap: "16px",
                     textAlign: "center",
                   }}

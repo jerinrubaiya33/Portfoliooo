@@ -320,6 +320,11 @@ const STYLES = `
 
   @media (max-width: 600px) {
     .cta-btns { flex-direction: column; gap: 12px; }
+    .detail-hero { padding: 32px 0 48px; }
+    .detail-body { padding: 40px 0; gap: 36px; }
+    .gallery-thumbs { gap: 8px; }
+    .gallery-thumb { width: 68px; height: 46px; }
+    .detail-nav { padding: 32px 0; }
   }
 
   /* ── FEATURES LIST ── */

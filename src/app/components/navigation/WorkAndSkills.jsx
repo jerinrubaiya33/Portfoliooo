@@ -928,6 +928,9 @@ body::-webkit-scrollbar {
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
 @media (max-width: 768px) { .wrap { padding: 0 24px; } }
 .sec { padding: 96px 0; }
+@media (max-width: 640px) {
+  .sec { padding: 72px 0; }
+}
 
 .div-line { width: 100%; height: 1px; background: ${C.borderLine}; }
 
@@ -955,6 +958,9 @@ body::-webkit-scrollbar {
   border-radius: 16px;
   padding: 36px;
   border: 1px solid ${C.borderLine};
+}
+@media (max-width: 640px) {
+  .i-card, .i2-card { padding: 24px 20px; }
 }
   
 .edu-card { display: flex; flex-direction: column; justify-content: flex-start; align-self: end; padding-top: 24px; }
@@ -986,6 +992,13 @@ body::-webkit-scrollbar {
   cursor: pointer;
 }
 .cert-link:hover { color: ${C.orangeAccent}; text-decoration-color: ${C.orangeAccent}; }
+@media (max-width: 640px) {
+  .cert-link {
+    width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
 
 .cert-preview-window {
   position: absolute;
@@ -1100,7 +1113,7 @@ export default function WorkAndSkills({ onSelectProject }) {
           <motion.div className="wrap " variants={groupReveal}>
             <motion.div style={{ marginBottom: 44 }} variants={itemReveal}>
               <div className="labelG">My Journey</div>
-              <h2 className="dh" style={{ fontSize: "clamp(61px, 6vw, 56px)" }}>
+              <h2 className="dh" style={{ fontSize: "clamp(38px, 6vw, 56px)" }}>
                 A Bit of Story &<br />
                 {"What I've Learned"}
               </h2>
