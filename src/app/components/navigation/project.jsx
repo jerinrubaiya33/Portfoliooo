@@ -272,7 +272,7 @@ export default function Project({ onSelectProject }) {
               </motion.div>
               <h2 className="dh" style={{ fontSize: "clamp(48px, 9vw, 80px)" }}>
                 Things<br />
-                <span className="hl">I've Built</span>
+                <span className="hl">{"I've Built"}</span>
               </h2>
             </motion.div>
             <motion.p

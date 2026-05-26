@@ -180,7 +180,7 @@ export default function Contact() {
           <br />
           <p className="ml-[200px] text-[#269add]">in mind?</p>
         </p>
-        <p className="cta-sub ml-[200px]">Let's build reliable, fluid web systems.</p>
+        <p className="cta-sub ml-[200px]">{"Let's build reliable, fluid web systems."}</p>
         <a href="mailto:jerinrubaiyakhan11@gmail.com" className="cta-btn ml-[200px]">
           Start a Conversation →
         </a>

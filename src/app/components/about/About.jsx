@@ -187,7 +187,7 @@ export default function About() {
           <motion.div className="bento" variants={groupReveal}>
             <motion.div className="b-card hero-card" variants={itemReveal}>
               <p className="bio-text">
-                I’m someone who pays attention to both functionality and user experience, working with the MERN stack, Next.js, and Three.js to build fast, responsive, and visually engaging applications. I enjoy creating immersive 3D experiences and building secure backend systems, always aiming to create products that are simple and impactful. I’m always ready to learn new technologies that help me grow as a developer.
+                {"I’m someone who pays attention to both functionality and user experience, working with the MERN stack, Next.js, and Three.js to build fast, responsive, and visually engaging applications. I enjoy creating immersive 3D experiences and building secure backend systems, always aiming to create products that are simple and impactful. I’m always ready to learn new technologies that help me grow as a developer."}
               </p>
               <div className="pills">
                 {["React", "Next.js", "TypeScript"].map((s) => (
