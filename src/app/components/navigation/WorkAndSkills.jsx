@@ -1102,7 +1102,7 @@ export default function WorkAndSkills({ onSelectProject }) {
               <div className="labelG">My Journey</div>
               <h2 className="dh" style={{ fontSize: "clamp(61px, 6vw, 56px)" }}>
                 A Bit of Story &<br />
-                What I've Learned
+                {"What I've Learned"}
               </h2>
             </motion.div>
 
