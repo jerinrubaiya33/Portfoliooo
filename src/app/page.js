@@ -118,9 +118,6 @@ export default function Home() {
     return <div className="fixed inset-0 bg-[#A4BE2A]" />;
   }
 
-  // ════════════════════════════════════════════════════════════
-  // ⚡️ STAGE 1: ABSOLUTE ISOLATION TAKEOVER
-  // ════════════════════════════════════════════════════════════
   // If a project is active, we return immediately. This stops the rest 
   // of the homepage layout below from ever execution or layout mounting.
   if (selectedProject) {
@@ -132,9 +129,7 @@ export default function Home() {
     );
   }
 
-  // ════════════════════════════════════════════════════════════
-  // ── STAGE 2: BASE LANDING / HERO LAYOUT ──
-  // ════════════════════════════════════════════════════════════
+  // STAGE 2: BASE LANDING / HERO LAYOUT
   return (
     <>
       {/* 1. Terminal Loader Layer */}
