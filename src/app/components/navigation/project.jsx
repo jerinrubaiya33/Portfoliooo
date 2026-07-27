@@ -158,7 +158,7 @@ const STYLES = `
 `;
 
 const projects = [
-  { num: "001", title: "EduNest — LMS Platform",        tags: "Next.js · Node.js · MongoDB",    year: "2026", feat: false, image: "/background/EduNest.png?v=001" },
+  { num: "001", title: "EduNest — LMS Platform",        tags: "Next.js · Node.js · MongoDB",    year: "2026", feat: false, image: "/background/EduNest.jpg?v=001" },
   { num: "002", title: "Zephyra — E-Commerce Platform",  tags: "React · Express.js · Cloudinary", year: "2026", feat: true,  image: "/background/Zephyra.png?v=002" },
   { num: "003", title: "Muslima — Android App",          tags: "Flutter · Dart · Android SDK",    year: "2025", feat: false, image: "/background/Muslima.png?v=003" },
   { num: "004", title: "Stick Game",                     tags: "HTML · CSS · JavaScript",         year: "2025", feat: false, image: "/background/Stick.png?v=004" },

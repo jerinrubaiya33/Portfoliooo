@@ -825,54 +825,321 @@
 
 
 
+// "use client";
+// import React, { useState, useEffect, useRef } from "react";
+// import { motion } from "framer-motion";
+// import Project from "./project";
+// import Contact from "../contact/Contact";
+// import About from "../about/About";
+// import Skills from "./Skills";
 
+// // ── COLOR PALETTE ──
+// const C = {
+//   bg: "#121212",
+//   cardDark: "#1E1E1E",
+//   pureWhite: "#FFFFFF",
+//   neonGreen: "#269add",
+//   orangeAccent: "#A4BE2A",
+//   grayText: "#9CA3AF",
+//   borderLine: "#2E2E2E",
+// };
 
+// const STYLES = `
+// *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+// /* ── SCROLLBAR CONFIG ── */
+// html, body {
+//   background: ${C.bg};
+//   margin: 0;
+//   padding: 0;
+//   width: 100%;
+//   overflow-x: hidden;
+//   -ms-overflow-style: none;  
+//   scrollbar-width: none;  
+// }
 
+// html::-webkit-scrollbar,
+// body::-webkit-scrollbar {
+//   display: none;
+// }
 
+// .port {
+//   background: ${C.bg};
+//   color: ${C.pureWhite};
+//   font-family: 'Plus Jakarta Sans', sans-serif;
+//   width: 100%;
+//   position: relative;
+//   overflow: visible; 
+// }
 
+// .wrap { max-width: 1160px; margin: 0 auto; padding: 0 48px; }
+// @media (max-width: 768px) { .wrap { padding: 0 24px; } }
+// .sec { padding: 96px 0; }
+// @media (max-width: 640px) {
+//   .sec { padding: 72px 0; }
+// }
 
+// .div-line { width: 100%; height: 1px; background: ${C.borderLine}; }
 
+// .labelG {
+//   display: inline-flex;
+//   align-items: center;
+//   gap: 10px;
+//   font-family: 'JetBrains Mono', monospace;
+//   font-size: 11px;
+//   letter-spacing: 0.16em;
+//   text-transform: uppercase;
+//   color: ${C.orangeAccent};
+//   margin-bottom: 18px;
+// }
+// .labelG::before { content: ''; width: 16px; height: 2px; background: ${C.orangeAccent}; }
 
+// .dh { font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: ${C.pureWhite}; }
 
+// /* ── EDU / CREDENTIALS ── */
+// .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+// @media (max-width: 768px) { .two { grid-template-columns: 1fr; } }
 
+// .i-card, .i2-card {
+//   background: ${C.cardDark};
+//   border-radius: 16px;
+//   padding: 36px;
+//   border: 1px solid ${C.borderLine};
+// }
+// @media (max-width: 640px) {
+//   .i-card, .i2-card { padding: 24px 20px; }
+// }
+  
+// .edu-card { display: flex; flex-direction: column; justify-content: flex-start; align-self: end; padding-top: 24px; }
+// .i-cat {
+//   font-family: 'JetBrains Mono', monospace;
+//   font-size: 11px;
+//   letter-spacing: 0.14em;
+//   text-transform: uppercase;
+//   color: ${C.orangeAccent};
+//   margin-bottom: 24px;
+// }
+// .i-item { margin-bottom: 24px; }
+// .i-item:last-child { margin-bottom: 0; }
+// .i-item h4 { font-size: 16px; font-weight: 700; color: ${C.pureWhite}; margin-bottom: 6px; }
+// .i-item p { font-size: 13px; color: ${C.grayText}; line-height: 1.7; }
 
+// .cert-card { position: relative; overflow: visible; }
+// .cert-list { display: flex; flex-direction: column; gap: 18px; }
+// .cert-link {
+//   width: fit-content;
+//   font-size: 18px;
+//   font-weight: 600;
+//   line-height: 1.45;
+//   color: ${C.pureWhite};
+//   text-decoration: underline;
+//   text-decoration-color: rgba(255, 255, 255, 0.28);
+//   text-underline-offset: 7px;
+//   transition: color 0.2s ease, text-decoration-color 0.2s ease;
+//   cursor: pointer;
+// }
+// .cert-link:hover { color: ${C.orangeAccent}; text-decoration-color: ${C.orangeAccent}; }
+// @media (max-width: 640px) {
+//   .cert-link {
+//     width: 100%;
+//     font-size: 16px;
+//     line-height: 1.5;
+//   }
+// }
 
+// .cert-preview-window {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 200px;
+//   height: 150px;
+//   aspect-ratio: 16 / 10;
+//   border-radius: 3px;
+//   overflow: hidden;
+//   pointer-events: none;
+//   z-index: 12;
+//   opacity: 0;
+//   transform: scale(0.88);
+//   transition: opacity 0.25s ease, transform 0.25s ease;
+//   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45), 0 0 0 1px ${C.borderLine};
+//   background: ${C.bg};
+// }
+// .cert-preview-window.active { opacity: 1; transform: scale(1); }
+// .cert-preview-img-wrap { position: relative; width: 100%; height: 100%; }
+// .cert-preview-img {
+//   position: absolute;
+//   inset: 0;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   opacity: 0;
+//   transition: opacity 0.2s ease;
+// }
+// .cert-preview-img.visible { opacity: 1; }
+// @media (hover: none) { .cert-preview-window { display: none !important; } }
 
+// .port.loading { opacity: 0; transform: translateY(10px); }
+// .port.loaded { opacity: 1; transform: translateY(0); transition: opacity 0.3s ease-out, transform 0.3s ease-out; }
+// `;
 
+// const sectionReveal = {
+//   hidden: { opacity: 0, y: 28 },
+//   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+// };
 
+// const groupReveal = {
+//   hidden: { opacity: 0 },
+//   visible: { opacity: 1, transition: { staggerChildren: 0.08, delayChildren: 0.06 } },
+// };
 
+// const itemReveal = {
+//   hidden: { opacity: 0, y: 18 },
+//   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
+// };
 
+// const certifications = [
+//   {
+//     title: "Master React, Redux and Next.js: The Practical Course",
+//     image: "/background/React_Redux_Next.png",
+//     href: "https://www.udemy.com/certificate/UC-41f271c8-55fc-433e-bce3-66eec79a66a0/",
+//   },
+//   {
+//     title: "UIUX with Figma and Adobe XD",
+//     image: "/background/Figma_Adobe.png",
+//     href: "https://www.udemy.com/certificate/UC-ff0a8bc8-4350-48bd-8b64-6685beff9de2/",
+//   },
+//   {
+//     title: "Build 20 JavaScript Projects in 20 Day with HTML, CSS & JS",
+//     image: "/background/HTML_CSS_JS.png",
+//     href: "https://www.udemy.com/certificate/UC-d163a9a4-baf4-4b6e-b31a-99ee471fa2c7/",
+//   },
+// ];
 
+// export default function WorkAndSkills({ onSelectProject }) {
+//   const [isLoaded, setIsLoaded] = useState(false);
+//   const [activeCertificateTitle, setActiveCertificateTitle] = useState(null);
+//   const [isCertificateHovered, setIsCertificateHovered] = useState(false);
+//   const certCardRef = useRef(null);
+//   const certPreviewRef = useRef(null);
 
+//   useEffect(() => {
+//     const timer = setTimeout(() => setIsLoaded(true), 50);
+//     return () => clearTimeout(timer);
+//   }, []);
 
+//   const handleCertificateMouseMove = (e) => {
+//     if (!certCardRef.current || !certPreviewRef.current) return;
+//     const rect = certCardRef.current.getBoundingClientRect();
+//     const x = e.clientX - rect.left;
+//     const y = e.clientY - rect.top;
+//     certPreviewRef.current.style.left = `${Math.min(x + 24, rect.width - 190)}px`;
+//     certPreviewRef.current.style.top = `${Math.max(y - 150, 12)}px`;
+//   };
 
+//   return (
+//     <>
+//       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+//       <div className={`port ${isLoaded ? "loaded" : "loading"}`}>
 
+//         {/* WORK SECTION */}
+//         <Project onSelectProject={onSelectProject} />
+//          <div className="div-line" />
+//         <Skills />
+//         <div className="div-line" />
+//         < About />
+//         <div className="div-line" />
+        
+//         {/* EDU & CREDENTIALS */}
+//         <motion.section
+//           className="sec"
+//           variants={sectionReveal}
+//           initial="hidden"
+//           whileInView="visible"
+//           viewport={{ once: false, amount: 0.2 }}
+//         >
+//           <motion.div className="wrap " variants={groupReveal}>
+//             <motion.div style={{ marginBottom: 44 }} variants={itemReveal}>
+//               <div className="labelG">My Journey</div>
+//               <h2 className="dh" style={{ fontSize: "clamp(38px, 6vw, 56px)" }}>
+//                 A Bit of Story &<br />
+//                 {"What I've Learned"}
+//               </h2>
+//             </motion.div>
 
+//             <motion.div className="two" variants={groupReveal}>
+//               <motion.div
+//                 className="i-card cert-card"
+//                 variants={itemReveal}
+//                 ref={certCardRef}
+//                 onMouseMove={handleCertificateMouseMove}
+//                 onMouseLeave={() => setIsCertificateHovered(false)}
+//               >
+//                 <motion.div
+//                   className={`cert-preview-window ${isCertificateHovered ? "active" : ""}`}
+//                   ref={certPreviewRef}
+//                   animate={{
+//                     opacity: isCertificateHovered ? 1 : 0,
+//                     scale: isCertificateHovered ? 1 : 0.92,
+//                     rotate: isCertificateHovered ? 0 : -2,
+//                   }}
+//                   transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+//                 >
+//                   <div className="cert-preview-img-wrap">
+//                     {certifications.map((cert) => (
+//                       <img
+//                         key={cert.title}
+//                         src={cert.image}
+//                         alt={`${cert.title} preview`}
+//                         className={`cert-preview-img ${activeCertificateTitle === cert.title ? "visible" : ""}`}
+//                       />
+//                     ))}
+//                   </div>
+//                 </motion.div>
 
+//                 <div className="i-cat">Certifications</div>
+//                 <div className="i-item">
+//                   <div className="cert-list">
+//                     {certifications.map((cert) => (
+//                       <a
+//                         key={cert.title}
+//                         className="cert-link"
+//                         href={cert.href}
+//                         target="_blank"
+//                         rel="noreferrer"
+//                         onMouseEnter={() => {
+//                           setActiveCertificateTitle(cert.title);
+//                           setIsCertificateHovered(true);
+//                         }}
+//                       >
+//                         {cert.title}
+//                       </a>
+//                     ))}
+//                   </div>
+//                 </div>
+//               </motion.div>
 
+//               <motion.div className="i2-card edu-card" variants={itemReveal}>
+//                 <div className="i-cat">Education</div>
+//                 <div className="i-item">
+//                   <h4>BSc in Computer Science and Engineering</h4>
+//                   <p style={{ fontSize: '13px', opacity: 0.85, marginBottom: '2px' }}>
+//                     Shaikh Burhanuddin Post Graduate College
+//                   </p>
+//                   <p>Aug 2025 — Present · Expected Graduation: 2029</p>
+//                 </div>
+//               </motion.div>
+//             </motion.div>
+//           </motion.div>
+//         </motion.section>
 
+//         <div className="div-line" />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//         {/* CONTACT SECTION */}
+//         <Contact />
+//       </div>
+//     </>
+//   );
+// }
 
 
 
@@ -881,6 +1148,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image"; // Optimization Fix: Import Next.js Image loader
 import Project from "./project";
 import Contact from "../contact/Contact";
 import About from "../about/About";
@@ -897,25 +1165,8 @@ const C = {
   borderLine: "#2E2E2E",
 };
 
+// Optimization Fix: Removed global HTML/Body re-paints from child component CSS injection context
 const STYLES = `
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-/* ── SCROLLBAR CONFIG ── */
-html, body {
-  background: ${C.bg};
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  -ms-overflow-style: none;  
-  scrollbar-width: none;  
-}
-
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-}
-
 .port {
   background: ${C.bg};
   color: ${C.pureWhite};
@@ -972,6 +1223,7 @@ body::-webkit-scrollbar {
   color: ${C.orangeAccent};
   margin-bottom: 24px;
 }
+.i-cat { margin-bottom: 24px; }
 .i-item { margin-bottom: 24px; }
 .i-item:last-child { margin-bottom: 0; }
 .i-item h4 { font-size: 16px; font-weight: 700; color: ${C.pureWhite}; margin-bottom: 6px; }
@@ -1024,7 +1276,6 @@ body::-webkit-scrollbar {
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -1099,7 +1350,7 @@ export default function WorkAndSkills({ onSelectProject }) {
          <div className="div-line" />
         <Skills />
         <div className="div-line" />
-        < About />
+        <About />
         <div className="div-line" />
         
         {/* EDU & CREDENTIALS */}
@@ -1139,12 +1390,26 @@ export default function WorkAndSkills({ onSelectProject }) {
                 >
                   <div className="cert-preview-img-wrap">
                     {certifications.map((cert) => (
-                      <img
+                      <div
                         key={cert.title}
-                        src={cert.image}
-                        alt={`${cert.title} preview`}
-                        className={`cert-preview-img ${activeCertificateTitle === cert.title ? "visible" : ""}`}
-                      />
+                        className={`cert-preview-img absolute inset-0 ${
+                          activeCertificateTitle === cert.title ? "visible" : ""
+                        }`}
+                        style={{
+                          opacity: activeCertificateTitle === cert.title ? 1 : 0,
+                          transition: "opacity 0.2s ease",
+                        }}
+                      >
+                        {/* Optimization Fix: Swapped <img> for optimized next/image elements to pass LCP metric logs */}
+                        <Image
+                          src={cert.image}
+                          alt={`${cert.title} preview`}
+                          fill
+                          sizes="200px"
+                          style={{ objectFit: "cover" }}
+                          priority={false}
+                        />
+                      </div>
                     ))}
                   </div>
                 </motion.div>

@@ -421,9 +421,9 @@ const projects = [
     tags: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS"],
     year: "2026",
     feat: false,
-    image: "/background/EduNest.png?v=001",
+    image: "/background/EduNest.jpg?v=001",
     screenshots: [
-      "/background/EduNest.png?v=001",
+      "/background/EduNest.jpg?v=001",
     ],
     description:
       "EduNest is an easy-to-use learning platform that helps students and teachers connect in one place. Teachers can create courses and share video lessons, while students can learn at their own pace, track their progress, and take quizzes in real time — all in a clean and simple interface.",

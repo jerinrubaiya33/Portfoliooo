@@ -60,6 +60,16 @@
 //   z-index: 30;
 //   pointer-events: none;
 //   font-family: "Plus Jakarta Sans", sans-serif;
+
+//   @media (max-width: 768px) {
+//     position: relative;
+//     height: auto;
+//     min-height: 100vh;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     padding: 24px 0;
+//   }
 // `;
 
 // /*
@@ -92,10 +102,13 @@
 //   @media (max-width: 768px) {
 //     position: relative;
 //     transform: none;
-//     margin: 110px 16px 32px;
+//     /* Pushed significantly further down towards the bottom on mobile viewports */
+//     margin: 260px auto 40px; 
+//     top: 0;
 //     left: 0;
-//     max-width: none;
-//     padding: 28px 20px;
+//     width: calc(100% - 32px);
+//     max-width: 500px;
+//     padding: 32px 24px;
 //     border-radius: 18px;
 //   }
 // `;
@@ -127,6 +140,13 @@
 //   circle {
 //     fill: ${C.neonGreen};
 //   }
+
+//   @media (max-width: 480px) {
+//     width: 130px;
+//     height: 130px;
+//     top: -15px;
+//     left: -55px;
+//   }
 // `;
 
 // /*
@@ -154,6 +174,13 @@
 
 //   circle {
 //     fill: ${C.neonGreen};
+//   }
+
+//   @media (max-width: 480px) {
+//     width: 150px;
+//     height: 150px;
+//     right: -40px;
+//     bottom: -40px;
 //   }
 // `;
 
@@ -185,6 +212,14 @@
 //     height: 1.5px;
 //     background: ${C.orangeAccent};
 //   }
+
+//   @media (max-width: 480px) {
+//     font-size: 11px;
+//     margin-bottom: 14px;
+//     &::before {
+//       width: 14px;
+//     }
+//   }
 // `;
 
 // const Brand = styled.h1`
@@ -197,6 +232,10 @@
 
 //   position: relative;
 //   z-index: 2;
+
+//   @media (max-width: 480px) {
+//     font-size: 38px;
+//   }
 // `;
 
 // const Divider = styled.div`
@@ -210,6 +249,10 @@
 
 //   position: relative;
 //   z-index: 2;
+
+//   @media (max-width: 480px) {
+//     margin: 20px 0;
+//   }
 // `;
 
 // const RoleText = styled.p`
@@ -225,6 +268,12 @@
 //   span {
 //     color: ${C.pureBlack};
 //     font-weight: 700;
+//   }
+
+//   @media (max-width: 480px) {
+//     font-size: 14px;
+//     line-height: 1.6;
+//     margin-bottom: 28px;
 //   }
 // `;
 
@@ -286,8 +335,9 @@
 //   pointer-events: auto;
 
 //   @media (max-width: 768px) {
-//     flex-wrap: wrap;
-//     gap: 8px;
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 10px;
 //   }
 // `;
 
@@ -314,13 +364,9 @@
 //   transition: all 0.25s ease;
 
 //   @media (max-width: 768px) {
-//     flex: 1 1 calc(50% - 4px);
-//     min-width: 0;
-//     padding: 12px 16px;
-//   }
-
-//   @media (max-width: 480px) {
-//     flex-basis: 100%;
+//     width: 100%;
+//     padding: 12px 10px;
+//     font-size: 10.5px;
 //   }
 
 //   &.primary {
@@ -373,7 +419,8 @@
 
 //   @media (max-width: 768px) {
 //     margin-top: 24px;
-//     font-size: 12px;
+//     font-size: 11px;
+//     text-align: center;
 //   }
 // `;
 
@@ -407,9 +454,10 @@
 //     position: relative;
 //     left: 0;
 //     bottom: 0;
-//     flex-wrap: wrap;
-//     gap: 16px;
-//     padding: 0 16px 32px;
+//     justify-content: center;
+//     gap: 28px;
+//     padding: 12px 16px 24px;
+//     margin-top: auto;
 //   }
 // `;
 
@@ -461,12 +509,6 @@
 //         <Brand>Rubaiya Khan</Brand>
 
 //         <Divider />
-
-//         {/* <RoleText>
-//           Building robust, modular{" "}
-//           <span>Full-Stack Web Systems</span> and engineered
-//           high-fidelity UI animations.
-//         </RoleText> */}
 
 //         <RoleText>
 //           I build scalable{" "}
@@ -575,6 +617,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 "use client";
 
 import { BtnList } from "@/app/data";
@@ -640,12 +693,16 @@ const NavContainer = styled.div`
 
   @media (max-width: 768px) {
     position: relative;
+    inset: auto;
     height: auto;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     padding: 24px 0;
+    pointer-events: auto; /* Re-enable pointer events on mobile */
+    overflow-y: auto;    /* Allow scrolling on mobile container */
+    -webkit-overflow-scrolling: touch;
   }
 `;
 
@@ -658,7 +715,7 @@ const HeroContent = styled.div`
   left: 48px;
   top: 50%;
   transform: translateY(-50%);
-  pointer-events: none;
+  pointer-events: auto; /* Enable touch interaction inside hero card */
 
   max-width: 580px;
 
@@ -679,8 +736,7 @@ const HeroContent = styled.div`
   @media (max-width: 768px) {
     position: relative;
     transform: none;
-    /* Pushed significantly further down towards the bottom on mobile viewports */
-    margin: 260px auto 40px; 
+    margin: 140px auto 20px; /* Reduced huge 260px top margin */
     top: 0;
     left: 0;
     width: calc(100% - 32px);
@@ -886,13 +942,6 @@ const BottomRightHint = styled.div`
   }
 
   @media (max-width: 768px) {
-    right: 16px;
-    bottom: 16px;
-    font-size: 11px;
-    padding: 8px 12px;
-  }
-
-  @media (max-width: 640px) {
     display: none;
   }
 `;
@@ -1069,15 +1118,9 @@ const Navigation = () => {
   return (
     <NavContainer>
       <HeroContent>
-        {/* TOP LEFT CURVE */}
         <TopCurve viewBox="0 0 180 180">
-          {/* Half Circle */}
           <path d="M150 90 A60 60 0 1 0 30 90" />
-
-          {/* Arrow */}
           <path d="M38 78 L30 90 L44 92" />
-
-          {/* Dot */}
           <circle cx="150" cy="90" r="4" />
         </TopCurve>
 
@@ -1141,22 +1184,17 @@ const Navigation = () => {
           Available for work
         </StatusIndicator>
 
-        {/* BOTTOM RIGHT CURVE */}
         <BottomCurve viewBox="0 0 210 210">
           <path d="M28 70 C 70 165, 145 165, 182 118" />
-
           <path d="M170 107 L182 118 L168 122" />
-
           <circle cx="28" cy="70" r="4" />
         </BottomCurve>
       </HeroContent>
 
-      {/* DETACHED RUNTIME ENVIRONMENTAL INTERACTION LABELS */}
       <BottomRightHint>
         <span>↓</span> Drag to pan the scene
       </BottomRightHint>
 
-      {/* SOCIAL FOOTER */}
       <SocialBar>
         {social.map((btn, i) => {
           const Icon = socialIcons[btn.label];

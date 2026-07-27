@@ -12,20 +12,21 @@ export default function CustomCursor() {
   useEffect(() => {
     const cursor = document.getElementById("custom-hardware-cursor");
     const dot = document.getElementById("custom-hardware-dot");
-    if (!cursor || !dot) return;
-
+    
     const handleMouseMove = (event) => {
-      cursor.style.setProperty("--cursor-x", `${event.clientX}px`);
-      cursor.style.setProperty("--cursor-y", `${event.clientY}px`);
-      
-      dot.style.setProperty("--cursor-x", `${event.clientX}px`);
-      dot.style.setProperty("--cursor-y", `${event.clientY}px`);
-      
-      if (!visible) setVisible(true);
+      if (cursor && dot) {
+        cursor.style.setProperty("--cursor-x", `${event.clientX}px`);
+        cursor.style.setProperty("--cursor-y", `${event.clientY}px`);
+        
+        dot.style.setProperty("--cursor-x", `${event.clientX}px`);
+        dot.style.setProperty("--cursor-y", `${event.clientY}px`);
+      }
     };
 
     const handleMouseOver = (e) => {
       const target = e.target;
+      if (!target) return;
+      
       const zoomTarget = target.closest(TEXT_ZOOM_SELECTOR);
       const interactiveEl = target.closest("a, button, [role='button'], .zoom-target");
       
@@ -42,8 +43,9 @@ export default function CustomCursor() {
 
     const handleMouseOut = (e) => {
       const target = e.target;
+      if (!target) return;
+      
       const zoomTarget = target.closest(TEXT_ZOOM_SELECTOR);
-
       if (zoomTarget) {
         zoomTarget.classList.remove("cursor-text-zoomed");
       }
@@ -52,7 +54,8 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setVisible(false);
     const handleMouseEnter = () => setVisible(true);
 
-    window.addEventListener("mousemove", handleMouseMove);
+    // Bind listeners once globally on mount to protect TBT metrics
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
     window.addEventListener("mouseover", handleMouseOver);
     window.addEventListener("mouseout", handleMouseOut);
     document.addEventListener("mouseleave", handleMouseLeave);
@@ -65,11 +68,10 @@ export default function CustomCursor() {
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
     };
-  }, [visible]);
+  }, []);
 
   return (
     <>
-      {/* Dynamic Global Overrides: Hides cursor and prepares link smoothing transitions */}
       <style dangerouslySetInnerHTML={{ __html: `
         @media (min-width: 768px) {
           body, a, button, input, select, textarea, [role="button"] {
@@ -78,7 +80,6 @@ export default function CustomCursor() {
         }
       `}} />
 
-      {/* Golden Blur Aura Ring */}
       <div
         id="custom-hardware-cursor"
         aria-hidden="true"
@@ -90,15 +91,12 @@ export default function CustomCursor() {
           borderWidth: "1px",
           borderStyle: "solid",
           backgroundColor: isHovered ? "rgba(212, 175, 55, 0.15)" : "rgba(212, 175, 55, 0.04)",
-          backdropFilter: isHovered ? "blur(0px)" : "blur(0px)",
-          WebkitBackdropFilter: isHovered ? "blur(0px)" : "blur(0px)",
           transform: "translate3d(calc(var(--cursor-x, 0px) - 50%), calc(var(--cursor-y, 0px) - 50%), 0)",
-          willChange: "transform, width, height, backdrop-filter",
+          willChange: "transform, width, height",
           opacity: visible ? 1 : 0,
         }}
       />
       
-      {/* Golden Inner Precision Dot */}
       <div
         id="custom-hardware-dot"
         aria-hidden="true"
