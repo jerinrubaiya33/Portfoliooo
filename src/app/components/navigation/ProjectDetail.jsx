@@ -422,9 +422,7 @@ const projects = [
     year: "2026",
     feat: false,
     image: "/background/EduNest.jpg?v=001",
-    screenshots: [
-      "/background/EduNest.jpg?v=001",
-    ],
+    screenshots: ["/background/EduNest.jpg?v=001"],
     description:
       "EduNest is an easy-to-use learning platform that helps students and teachers connect in one place. Teachers can create courses and share video lessons, while students can learn at their own pace, track their progress, and take quizzes in real time — all in a clean and simple interface.",
     features: [
@@ -444,9 +442,7 @@ const projects = [
     year: "2026",
     feat: true,
     image: "/background/Zephyra.png?v=002",
-    screenshots: [
-      "/background/Zephyra.png?v=002",
-    ],
+    screenshots: ["/background/Zephyra.png?v=002"],
     description:
       "Zephyra is online shopping website made to give users a smooth and easy shopping experience. People can quickly find products, view clear images, save items in their cart, and place orders without hassle — all in a simple and clean design.",
     features: [
@@ -467,39 +463,33 @@ const projects = [
     year: "2025",
     feat: false,
     image: "/background/Muslima.png?v=003",
-    screenshots: [
-      "/background/Muslima.png?v=003",
-    ],
+    screenshots: ["/background/Muslima.png?v=003"],
     description:
       "Muslima is an offline Islamic reading app where users can access and read Islamic books anytime without needing WiFi or mobile data. It’s built with simple design using Flutter.",
-    features: [
-      "Works smoothly even offline or with weak internet",
-    ],
+    features: ["Works smoothly even offline or with weak internet"],
     liveUrl: "https://github.com/jerinrubaiya33/Android_App",
     githubUrl: "https://github.com/jerinrubaiya33/Android_App",
   },
   {
     num: "004",
-    title: "Stick Game",
-    subtitle: "Browser Game",
-    tags: ["HTML", "CSS", "JavaScript"],
+    title: "Studio DNA",
+    subtitle: "Architect Firm",
+    tags: ["React", "TypeScript", "Emaill.Js"],
     year: "2025",
     feat: false,
-    image: "/background/Stick.png?v=004",
-    screenshots: [
-      "/background/Stick.png?v=004",
-    ],
+    image: "/background/studioDNA.png?v=004",
+    screenshots: ["/background/studioDNA.png?v=004"],
     description:
-      "A physics-based browser game where you grow a stick to cross between platforms. You need good timing and control — if the stick is too short or too long, you fall. It’s built using plain JavaScript, with no frameworks or extra libraries.",
+      "A modern, responsive web application designed for an architectural firm to showcase structural designs, project portfolios, and spatial concepts. Built with React and TypeScript for strong type safety and sleek UI performance, paired with direct email integration for client inquiries.",
     features: [
-      "Smooth canvas-based animation loop",
-      "Randomly generated gaps between platforms",
-      "Score system that rewards perfect streaks",
-      "Particle effects on perfect landings",
-      "Works with both touch (mobile) and click (desktop) controls",
+      "Interactive project gallery highlighting architectural portfolios",
+      "Integrated client inquiry form powered by EmailJS",
+      "Fully responsive, minimalist layout tailored for high-res design displays",
+      "Type-safe component architecture built with TypeScript and React",
+      "Optimized cross-browser performance and fluid UX interactions",
     ],
-    liveUrl: "https://jerinrubaiya33.github.io/Stick-Game/stick.html",
-    githubUrl: "https://github.com/jerinrubaiya33/Stick-Game",
+    liveUrl: "https://studio-dna.vercel.app",
+    githubUrl: "https://github.com/jerinrubaiya33/StudioDNA",
   },
   {
     num: "005",
@@ -509,9 +499,7 @@ const projects = [
     year: "2025",
     feat: false,
     image: "/background/Balloon.png?v=005",
-    screenshots: [
-      "/background/Balloon.png?v=005",
-    ],
+    screenshots: ["/background/Balloon.png?v=005"],
     description:
       "An addictive tap/click arcade game featuring colorful balloons rising at varying speeds and sizes. Pop as many as possible before the timer runs out — dynamic difficulty scaling keeps every round fresh.",
     features: [
@@ -531,7 +519,11 @@ const pageVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.08 },
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+      staggerChildren: 0.08,
+    },
   },
   exit: {
     opacity: 0,
@@ -567,7 +559,8 @@ export default function ProjectDetail({ projectNum, onBack }) {
   const project = projects.find((p) => p.num === currentNum) || projects[0];
   const currentIndex = projects.findIndex((p) => p.num === project.num);
   const prevProject = currentIndex > 0 ? projects[currentIndex - 1] : null;
-  const nextProject = currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
+  const nextProject =
+    currentIndex < projects.length - 1 ? projects[currentIndex + 1] : null;
 
   useEffect(() => {
     setActiveThumb(0);
@@ -606,7 +599,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
                 variants={blockVariants}
                 whileHover={{ x: -4 }}
                 transition={{ duration: 0.24, ease: "easeOut" }}
-                onClick={() => onBack ? onBack() : setCurrentNum("001")}
+                onClick={() => (onBack ? onBack() : setCurrentNum("001"))}
               >
                 <span className="arrow">←</span>
                 All Projects
@@ -615,13 +608,19 @@ export default function ProjectDetail({ projectNum, onBack }) {
               <motion.div className="detail-hero" variants={blockVariants}>
                 <div className="detail-meta">
                   <span className="detail-num">{project.num}</span>
-                  {project.feat && <span className="detail-badge">Featured</span>}
-                  <span style={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: 11,
-                    color: C.grayText,
-                    letterSpacing: "0.12em",
-                  }}>{project.year}</span>
+                  {project.feat && (
+                    <span className="detail-badge">Featured</span>
+                  )}
+                  <span
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 11,
+                      color: C.grayText,
+                      letterSpacing: "0.12em",
+                    }}
+                  >
+                    {project.year}
+                  </span>
                 </div>
 
                 <h1 className="detail-title">
@@ -633,7 +632,9 @@ export default function ProjectDetail({ projectNum, onBack }) {
                 <div className="detail-info-row">
                   <div className="detail-info-item">
                     <div className="detail-info-label">Stack</div>
-                    <div className="detail-info-value">{project.tags.join(" · ")}</div>
+                    <div className="detail-info-value">
+                      {project.tags.join(" · ")}
+                    </div>
                   </div>
                   <div className="detail-info-item">
                     <div className="detail-info-label">Year</div>
@@ -656,9 +657,18 @@ export default function ProjectDetail({ projectNum, onBack }) {
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   >
                     <div className="browser-bar">
-                      <div className="browser-dot" style={{ background: "#269add" }} />
-                      <div className="browser-dot" style={{ background: "#A4BE2A" }} />
-                      <div className="browser-dot" style={{ background: "#A4BE2A" }} />
+                      <div
+                        className="browser-dot"
+                        style={{ background: "#269add" }}
+                      />
+                      <div
+                        className="browser-dot"
+                        style={{ background: "#A4BE2A" }}
+                      />
+                      <div
+                        className="browser-dot"
+                        style={{ background: "#A4BE2A" }}
+                      />
                     </div>
                     <div className="browser-img-wrap">
                       <AnimatePresence mode="wait">
@@ -667,16 +677,23 @@ export default function ProjectDetail({ projectNum, onBack }) {
                           initial={{ opacity: 0, scale: 1.03 }}
                           animate={{ opacity: 1, scale: 1 }}
                           exit={{ opacity: 0, scale: 0.985 }}
-                          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                          transition={{
+                            duration: 0.45,
+                            ease: [0.22, 1, 0.36, 1],
+                          }}
                           style={{ width: "100%", height: "100%" }}
                         >
                           {mainImgFailed ? (
-                            <ScreenshotPlaceholder label={`${project.title} Preview`} />
+                            <ScreenshotPlaceholder
+                              label={`${project.title} Preview`}
+                            />
                           ) : (
                             <img
                               src={mainScreenshot}
                               alt={`${project.title} screenshot`}
-                              onError={() => handleImgError(`main-${activeThumb}`)}
+                              onError={() =>
+                                handleImgError(`main-${activeThumb}`)
+                              }
                             />
                           )}
                         </motion.div>
@@ -685,7 +702,10 @@ export default function ProjectDetail({ projectNum, onBack }) {
                   </motion.div>
 
                   {project.screenshots.length > 1 && (
-                    <motion.div className="gallery-thumbs" variants={blockVariants}>
+                    <motion.div
+                      className="gallery-thumbs"
+                      variants={blockVariants}
+                    >
                       {project.screenshots.map((src, i) => (
                         <motion.div
                           key={i}
@@ -730,19 +750,27 @@ export default function ProjectDetail({ projectNum, onBack }) {
                       whileTap={{ scale: 0.99 }}
                     >
                       <span>View on GitHub</span>
-                      <span className="cta-btn-icon" style={{ fontSize: 18 }}>⌥</span>
+                      <span className="cta-btn-icon" style={{ fontSize: 18 }}>
+                        ⌥
+                      </span>
                     </motion.a>
                   </motion.div>
                 </motion.div>
 
                 {/* RIGHT SIDEBAR COLUMN: Information details */}
                 <motion.div className="detail-sidebar" variants={blockVariants}>
-                  <motion.div className="sidebar-section" variants={blockVariants}>
+                  <motion.div
+                    className="sidebar-section"
+                    variants={blockVariants}
+                  >
                     <div className="sidebar-label">About</div>
                     <p className="sidebar-desc">{project.description}</p>
                   </motion.div>
 
-                  <motion.div className="sidebar-section" variants={blockVariants}>
+                  <motion.div
+                    className="sidebar-section"
+                    variants={blockVariants}
+                  >
                     <div className="sidebar-label">Tech Stack</div>
                     <div className="stack-tags">
                       {project.tags.map((tag) => (
@@ -758,7 +786,10 @@ export default function ProjectDetail({ projectNum, onBack }) {
                     </div>
                   </motion.div>
 
-                  <motion.div className="sidebar-section" variants={blockVariants}>
+                  <motion.div
+                    className="sidebar-section"
+                    variants={blockVariants}
+                  >
                     <div className="sidebar-label">Key Features</div>
                     <ul className="features-list">
                       {project.features.map((f, i) => (
@@ -766,7 +797,10 @@ export default function ProjectDetail({ projectNum, onBack }) {
                           key={i}
                           initial={{ opacity: 0, x: -12 }}
                           animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.45, delay: 0.15 + i * 0.06 }}
+                          transition={{
+                            duration: 0.45,
+                            delay: 0.15 + i * 0.06,
+                          }}
                         >
                           {f}
                         </motion.li>
@@ -786,7 +820,9 @@ export default function ProjectDetail({ projectNum, onBack }) {
                     <span className="nav-dir">← Previous</span>
                     <span className="nav-title">{prevProject.title}</span>
                   </motion.button>
-                ) : <div />}
+                ) : (
+                  <div />
+                )}
 
                 {nextProject ? (
                   <motion.button
@@ -797,7 +833,9 @@ export default function ProjectDetail({ projectNum, onBack }) {
                     <span className="nav-dir">Next →</span>
                     <span className="nav-title">{nextProject.title}</span>
                   </motion.button>
-                ) : <div />}
+                ) : (
+                  <div />
+                )}
               </motion.div>
             </motion.div>
           </AnimatePresence>
@@ -807,37 +845,6 @@ export default function ProjectDetail({ projectNum, onBack }) {
   );
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // "use client";
 
 // import React, { useState, useEffect } from "react";
@@ -846,7 +853,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
 
 // // ── ELITE EDITORIAL DESIGN SYSTEM WITH BLUE ACCENTS ──
 // const C = {
-//   bg: "#0B0B0C",           // Deep Obsidian 
+//   bg: "#0B0B0C",           // Deep Obsidian
 //   surface: "#111112",      // Subtle Platinum Surface
 //   textPrimary: "#F4F4F6",  // Crisp Off-White
 //   textSecondary: "#A1A1AA",// Muted Cool Gray
@@ -859,10 +866,10 @@ export default function ProjectDetail({ projectNum, onBack }) {
 // const STYLES = `
 //   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-//   *, *::before, *::after { 
-//     box-sizing: border-box; 
-//     margin: 0; 
-//     padding: 0; 
+//   *, *::before, *::after {
+//     box-sizing: border-box;
+//     margin: 0;
+//     padding: 0;
 //   }
 
 //   body {
@@ -874,10 +881,10 @@ export default function ProjectDetail({ projectNum, onBack }) {
 //     -webkit-font-smoothing: antialiased;
 //   }
 
-//   .portfolio-wrapper { 
-//     max-width: 1300px; 
-//     margin: 0 auto; 
-//     padding: 0 56px; 
+//   .portfolio-wrapper {
+//     max-width: 1300px;
+//     margin: 0 auto;
+//     padding: 0 56px;
 //   }
 //   @media (max-width: 768px) { .portfolio-wrapper { padding: 0 24px; } }
 
@@ -918,7 +925,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
 //   .masthead-section {
 //     padding: 80px 0 56px;
 //   }
-  
+
 //   .masthead-eyebrow {
 //     font-size: 13px;
 //     font-weight: 500;
@@ -966,7 +973,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
 //   @media (max-width: 768px) {
 //     .metadata-bar { grid-template-columns: 1fr; gap: 24px; }
 //   }
-  
+
 //   .meta-block {
 //     display: flex;
 //     flex-direction: column;
@@ -1076,9 +1083,9 @@ export default function ProjectDetail({ projectNum, onBack }) {
 //     flex-direction: column;
 //     gap: 48px;
 //   }
-  
+
 //   .details-segment {}
-  
+
 //   .segment-title {
 //     font-size: 11px;
 //     font-weight: 600;
@@ -1301,7 +1308,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
 
 //       <div style={{ background: C.bg, minHeight: "100vh" }}>
 //         <div className="portfolio-wrapper">
-          
+
 //           {/* HEADER NAV */}
 //           <header className="editorial-header">
 //             <button
@@ -1353,7 +1360,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
 
 //               {/* TWO COLUMN CONTENT STRUCTURE */}
 //               <div className="showcase-split">
-                
+
 //                 {/* INTERACTIVE WORKSPACE VIEWPORT */}
 //                 <div>
 //                   <div className="canvas-frame">
