@@ -12,12 +12,12 @@ export default function CustomCursor() {
   useEffect(() => {
     const cursor = document.getElementById("custom-hardware-cursor");
     const dot = document.getElementById("custom-hardware-dot");
-    
+
     const handleMouseMove = (event) => {
       if (cursor && dot) {
         cursor.style.setProperty("--cursor-x", `${event.clientX}px`);
         cursor.style.setProperty("--cursor-y", `${event.clientY}px`);
-        
+
         dot.style.setProperty("--cursor-x", `${event.clientX}px`);
         dot.style.setProperty("--cursor-y", `${event.clientY}px`);
       }
@@ -26,10 +26,12 @@ export default function CustomCursor() {
     const handleMouseOver = (e) => {
       const target = e.target;
       if (!target) return;
-      
+
       const zoomTarget = target.closest(TEXT_ZOOM_SELECTOR);
-      const interactiveEl = target.closest("a, button, [role='button'], .zoom-target");
-      
+      const interactiveEl = target.closest(
+        "a, button, [role='button'], .zoom-target"
+      );
+
       if (zoomTarget) {
         zoomTarget.classList.add("cursor-text-zoomed");
       }
@@ -44,7 +46,7 @@ export default function CustomCursor() {
     const handleMouseOut = (e) => {
       const target = e.target;
       if (!target) return;
-      
+
       const zoomTarget = target.closest(TEXT_ZOOM_SELECTOR);
       if (zoomTarget) {
         zoomTarget.classList.remove("cursor-text-zoomed");
@@ -54,8 +56,9 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setVisible(false);
     const handleMouseEnter = () => setVisible(true);
 
-    // Bind listeners once globally on mount to protect TBT metrics
-    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    window.addEventListener("mousemove", handleMouseMove, {
+      passive: true,
+    });
     window.addEventListener("mouseover", handleMouseOver);
     window.addEventListener("mouseout", handleMouseOut);
     document.addEventListener("mouseleave", handleMouseLeave);
@@ -72,14 +75,30 @@ export default function CustomCursor() {
 
   return (
     <>
-      <style dangerouslySetInnerHTML={{ __html: `
-        @media (min-width: 768px) {
-          body, a, button, input, select, textarea, [role="button"] {
-            cursor: none !important;
-          }
-        }
-      `}} />
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            @media (min-width: 768px) {
+              body,
+              a,
+              button,
+              input,
+              select,
+              textarea,
+              [role="button"] {
+                cursor: none !important;
+              }
+            }
 
+            .cursor-text-zoomed {
+              transform: scale(1.05);
+              transition: transform 0.25s ease;
+            }
+          `,
+        }}
+      />
+
+      {/* Outer Cursor Ring */}
       <div
         id="custom-hardware-cursor"
         aria-hidden="true"
@@ -87,23 +106,31 @@ export default function CustomCursor() {
         style={{
           width: isHovered ? "56px" : "32px",
           height: isHovered ? "56px" : "32px",
-          borderColor: isHovered ? "rgba(212, 175, 55, 0.15)" : "rgba(212, 175, 55, 0.35)",
+          borderColor: isHovered
+            ? "rgba(164, 190, 42, 0.15)"
+            : "rgba(164, 190, 42, 0.35)",
           borderWidth: "1px",
           borderStyle: "solid",
-          backgroundColor: isHovered ? "rgba(212, 175, 55, 0.15)" : "rgba(212, 175, 55, 0.04)",
-          transform: "translate3d(calc(var(--cursor-x, 0px) - 50%), calc(var(--cursor-y, 0px) - 50%), 0)",
+          backgroundColor: isHovered
+            ? "rgba(164, 190, 42, 0.15)"
+            : "rgba(164, 190, 42, 0.04)",
+          transform:
+            "translate3d(calc(var(--cursor-x, 0px) - 50%), calc(var(--cursor-y, 0px) - 50%), 0)",
           willChange: "transform, width, height",
           opacity: visible ? 1 : 0,
         }}
       />
-      
+
+      {/* Inner Dot */}
       <div
         id="custom-hardware-dot"
         aria-hidden="true"
         className="pointer-events-none fixed left-0 top-0 z-[10000] hidden h-2 w-2 rounded-full transition-all duration-200 ease-out md:block"
         style={{
-          backgroundColor: "#D4AF37",
-          transform: `translate3d(calc(var(--cursor-x, 0px) - 50%), calc(var(--cursor-y, 0px) - 50%), 0) ${isHovered ? "scale(0.4)" : "scale(1)"}`,
+          backgroundColor: "#A4BE2A",
+          transform: `translate3d(calc(var(--cursor-x, 0px) - 50%), calc(var(--cursor-y, 0px) - 50%), 0) ${
+            isHovered ? "scale(0.4)" : "scale(1)"
+          }`,
           willChange: "transform",
           opacity: visible ? 1 : 0,
         }}

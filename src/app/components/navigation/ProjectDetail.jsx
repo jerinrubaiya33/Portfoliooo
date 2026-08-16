@@ -656,7 +656,7 @@ export default function ProjectDetail({ projectNum, onBack }) {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    <div className="browser-bar">
+                    {/* <div className="browser-bar">
                       <div
                         className="browser-dot"
                         style={{ background: "#269add" }}
@@ -669,8 +669,8 @@ export default function ProjectDetail({ projectNum, onBack }) {
                         className="browser-dot"
                         style={{ background: "#A4BE2A" }}
                       />
-                    </div>
-                    <div className="browser-img-wrap">
+                    </div> */}
+                    <div className="browser-img-wrap -mt-8">
                       <AnimatePresence mode="wait">
                         <motion.div
                           key={`${project.num}-${activeThumb}`}
@@ -844,6 +844,22 @@ export default function ProjectDetail({ projectNum, onBack }) {
     </>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // "use client";
 

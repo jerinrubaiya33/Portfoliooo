@@ -40,7 +40,9 @@ export default function VideoTrackLoader({ onComplete }) {
 
       const lookAheadLength = Math.min(targetLength + 1, pathLength);
       const nextPoint = pathRef.current.getPointAtLength(lookAheadLength);
-      const degreeAngle = Math.atan2(nextPoint.y - point.y, nextPoint.x - point.x) * (180 / Math.PI);
+      const degreeAngle =
+        Math.atan2(nextPoint.y - point.y, nextPoint.x - point.x) *
+        (180 / Math.PI);
       setAngle(degreeAngle);
     }
   }, [progress]);
@@ -48,10 +50,7 @@ export default function VideoTrackLoader({ onComplete }) {
   return (
     <div className="fixed inset-0 bg-[#A4BE2A] flex flex-col justify-between p-6 md:p-12 z-[9999] select-none font-sans overflow-hidden">
       <div className="relative w-full max-w-2xl mx-auto h-64 flex items-center justify-center my-auto">
-        <svg 
-          viewBox="0 0 400 200" 
-          className="w-full h-full overflow-visible"
-        >
+        <svg viewBox="0 0 400 200" className="w-full h-full overflow-visible">
           <path
             ref={pathRef}
             d="M 40,30 C 120,190 280,190 360,30"
@@ -63,20 +62,18 @@ export default function VideoTrackLoader({ onComplete }) {
           />
 
           <g transform={`translate(${dotCoords.x}, ${dotCoords.y})`}>
-            <circle r="24" fill="#269add" className="opacity-15 animate-ping" />
-            <g style={{ transform: `rotate(${angle}deg) translateY(-7px)` }} className="transition-transform duration-75">
-              <g transform="translate(-16, -18)">
-                <line x1="16" y1="2" x2="16" y2="21" stroke="#8D6E63" strokeWidth="2" strokeLinecap="round" />
-                <path d="M 17 3 C 25 7 26 15 17 19 Z" fill="#D7CCC8" />
-                <path d="M 15 5 C 9 9 11 16 15 19 Z" fill="#BCAAA4" />
-                <path 
-                  d="M 3 20 C 8 20 25 20 29 20 C 26 24 21 26 16 26 C 11 26 6 24 3 20 Z" 
-                  fill="#8D6E63" 
-                  className="drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]"
-                />
-                <path d="M 4 21 L 28 21" stroke="#D7CCC8" strokeWidth="1" />
-              </g>
-            </g>
+            {/* Large pulse */}
+            <circle r="24" fill="#269add" className="animate-ping opacity-20" />
+
+            {/* Main blinking dot */}
+            <circle
+              r="8"
+              fill="#269add"
+              className="animate-pulse"
+              style={{
+                filter: "drop-shadow(0 0 12px #269add)",
+              }}
+            />
           </g>
         </svg>
 
