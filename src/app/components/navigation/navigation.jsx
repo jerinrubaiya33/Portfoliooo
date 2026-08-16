@@ -83,7 +83,7 @@ const NavContainer = styled.div`
 const HeroContent = styled.div`
   position: absolute;
   left: 48px;
-  top: 60%;
+  top: 70%;
   transform: translateY(-50%);
   pointer-events: auto; /* Enable touch interaction inside hero card */
 
